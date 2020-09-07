@@ -7,22 +7,7 @@ export default function MaterialTableDemo() {
     componentDidMount();
   });
 
-  const state = {
-    users: []
-  };
-
-  function componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then((res) => {
-        const users = res.data;
-        state.users = users;
-        console.log(state.users);
-      }).catch(err => {
-        console.log("Error Reading data " + err);
-      });
-  };
-
-  const [state2, setState] = React.useState({
+  const [state, setState] = React.useState({
     columns: [
       { title: 'ID ', field: 'id' },
       { title: 'Nome', field: 'name' },
@@ -31,15 +16,25 @@ export default function MaterialTableDemo() {
       { title: 'Telefone', field: 'phone' },
       { title: 'Website', field: 'website' },
     ],
-    data: state.users,
+    data: [],
   });
+
+  function componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then((res) => {
+        const users = res.data;
+        state.data = users;
+        return;
+      }).catch(err => {
+        console.log("Error Reading data " + err);
+      });
+  };
 
   return (
     <MaterialTable
       title="Usuários"
-      columns={state2.columns}
-      data={state2.data}
-      class="table-striped"
+      columns={state.columns}
+      data={state.data}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {
