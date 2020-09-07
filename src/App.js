@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react';
 const columns = [
   { id: 'id', label: 'ID', minWidth: 100 },
   { id: 'name', label: 'Nome', minWidth: 100 },
-  { id: 'username', label: 'usuário', minWidth: 100 },
+  { id: 'username', label: 'Usuário', minWidth: 100 },
   { id: 'email', label: 'E-mail', minWidth: 100 },
   { id: 'phone', label: 'Telefone', minWidth: 100 },
   { id: 'website', label: 'Website', minWidth: 100 },
